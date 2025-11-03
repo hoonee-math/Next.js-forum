@@ -1,0 +1,54 @@
+name: "✨ Feature Request"
+description: "새로운 기능 추가나 개선 사항을 제안합니다."
+title: "[Feat] 기능명 요약"
+labels: ["feature", "in progress"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🧩 기능 설명
+        추가하려는 기능이나 개선할 부분을 간단히 설명해주세요.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "기능 개요"
+      description: "무엇을, 왜, 어떻게 추가하려는지 구체적으로 작성해주세요."
+      placeholder: |
+        예) 사용자가 로그인 후 프로필 정보를 수정할 수 있도록 기능 추가.
+    validations:
+      required: true
+
+  - type: textarea
+    id: tasks
+    attributes:
+      label: "개발 항목"
+      description: "구현해야 할 세부 작업을 체크리스트 형태로 작성해주세요."
+      placeholder: |
+        - [ ] API 엔드포인트 설계
+        - [ ] 프론트엔드 UI 추가
+        - [ ] 백엔드 로직 구현
+        - [ ] 테스트 코드 작성
+    validations:
+      required: false
+
+  - type: input
+    id: branch
+    attributes:
+      label: "브랜치명"
+      description: "이슈와 연결할 브랜치명을 작성해주세요."
+      placeholder: "feature/#이슈번호-기능명"
+    validations:
+      required: false
+
+  - type: textarea
+    id: reference
+    attributes:
+      label: "참고 사항"
+      description: "디자인 시안, 관련 문서, 레퍼런스 링크 등이 있다면 작성해주세요."
+      placeholder: |
+        예) 디자인 피그마 링크: [링크]
+    validations:
+      required: false
