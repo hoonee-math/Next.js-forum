@@ -15,6 +15,7 @@ export default async function List() {
                 게시판과 같이 모든 페이지를 방문할 예정이 아니라면, 모든 Link 들을 미리 로드하는 것이 부담이 될 수 있음.
                 prefetch={false} 속성으로 기능을 끌 수 있음, 이건 개발 중에는 확인 못함. */}
             <Link href={'/detail/' + item._id}><h4>{item.title}</h4></Link>
+            <Link href={'/edit/' + item._id}><div> ✏️ </div></Link>
             <p>{item.content}</p>
             <DetailLink />
           </div>
