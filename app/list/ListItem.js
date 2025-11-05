@@ -24,7 +24,8 @@ export default function ListItem(props) {
               //       e.target.parentElement.style.display = 'none';
               //     },1000)
               //   })
-              fetch('/api/test?name=choi&age=20')
+              // fetch('/api/test?name=choi&age=20')
+              fetch('/api/test2/메롱')
             }}>🗑️</span>
             <p>{item.content}</p>
             <DetailLink />
