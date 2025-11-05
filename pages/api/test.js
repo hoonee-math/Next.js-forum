@@ -4,6 +4,7 @@ export default function handler(req, res) {
     return
   }
   if (req.method == 'GET') {
+    console.log(req.query)
     res.status(200).json('처리완료')
     return
   }
