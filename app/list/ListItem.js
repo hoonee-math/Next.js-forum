@@ -24,6 +24,11 @@ export default function ListItem(props) { // props를 편하게 사용하기 위
             {/* form 태그 말고도 서버에 Http 요청 보내는 방법: Ajax */}
             <span onClick={()=>{
               fetch('/api/post/delete',{ method: 'DELETE', body: item._id })
+                .then(res => res.json())
+                .then(data => {
+                  console.log(data.message);
+                  alert(data.message);
+                })
               // 문자나 숫자는 그냥 body에 넣어도 상관 없지만, Array 또는 Object 객체는 JSON.stringify() 로 묶어줘야함.
             }}>🗑️</span>
             <p>{item.content}</p>
