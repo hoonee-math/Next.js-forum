@@ -1,4 +1,16 @@
-// dynamic route page example
-// http://localhost:3000/detail/어쩌구 로 접속하면
-// @/app/detail/[어쩌구]/page.js 파일이 실행된다.
-// 즉 dynamic route page 는 폴더명에 대괄호를 사용한다.
+// detail/[어쩌구]/page.js
+import { connectDB } from "@/util/database.js"
+
+export default async function Detail() {
+  let db = (await connectDB).db('forum');
+  let result = await db.collection('post').findOne({ title : '안녕' });
+  console.log(result);
+
+  return (
+    <div>
+      <h4>상세페이지</h4>
+      <h4>글제목</h4>
+      <p>글내용</p>
+    </div>
+  );
+}
