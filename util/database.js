@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb'
 const url = process.env.MONGODB_URL
-const options = { useNewUrlParser: true }
+const options = {  } // useNewUrlParser: true MongoDB Node.js 드라이버 3.x 시대에는 필수였지만, 4.0 이상 버전부터는 기본 동작이 바뀌어서 더 이상 의미가 없음
 let connectDB
 
 // 개발 환경에서만 전역 변수를 사용하여 연결을 재사용합니다.
