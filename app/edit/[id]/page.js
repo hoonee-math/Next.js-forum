@@ -8,21 +8,17 @@ export default async function Edit(props) {
   const id = String(props.params.id);
   let result = await db.collection('post').findOne({ _id : new ObjectId(id) });
   console.log("✨ result: ", result);
-  
-  await db.collection('post').updateOne(
-    {수정할게시물정보},
-    {$set: {수정할내용}}
-  )
 
   return (
     <div className="p-20">
       <h1>글 수정 페이지</h1>
-      <form action="/api/post" method="POST">
-        {/* value 속성 */}
-        <input name="title" value={result.title}/><br />
+      <form action="/api/post/edit" method="POST">
+        {/* value 속성 안먹힘.. */}
         {/* defaultValue 가 Next.js 권장 */}
-        <input name="content" defaultValue={result.content}/><br />
-        <button type="submit">수정</button>
+        <input type="hidden" name="_id" value={id} />
+        <input name="title" defaultValue={result.title}/>
+        <input name="content" defaultValue={result.content}/>
+        <button type="submit">전송</button>
       </form>
     </div>
   )
