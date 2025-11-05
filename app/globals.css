@@ -21,3 +21,39 @@ body {
   color: grey;
   margin : 5px 0px;
 }
+.p-20 {
+  padding: 20px;
+}
+input {
+  box-sizing: border-box;
+  padding: 10px;
+  display: block;
+  margin-bottom: 10px;
+}
+button {
+  padding: 10px 15px;
+  background: lightgray;
+  border: none;
+  border-radius: 5px;
+}
+a {
+  text-decoration: none;
+  color : black;
+}
+.navbar {
+  background: white;
+  padding: 20px;
+}
+.navbar a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: black;
+}
+.logo {
+  font-weight: bold;
+}
+
+.list-item {
+  opacity: 1;
+  transition: all 1s; /* CSS 스타일이 바뀔때 1초에 걸쳐서 서서히 변경되게 해주세요 */
+}

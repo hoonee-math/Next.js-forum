@@ -6,7 +6,7 @@ export default async function Detail(props) {
   console.log("==== props: ",props); // { params: { id: '2' }, searchParams: {} }
   const id = String(props.params.id);
 
-  let db = (await connectDB).db('forum');
+  const db = (await connectDB).db('forum');
   let result = await db.collection('post').findOne({ _id : new ObjectId(id) });
 
   console.log("result: ", result);
