@@ -2,7 +2,7 @@ import NextAuth from 'next-auth'
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from 'next-auth/providers/google'
 
-export default NextAuth({
+export const authOptions = {
   providers: [
     // https://next-auth.js.org/
     // OAuth authentication providers...
@@ -16,4 +16,6 @@ export default NextAuth({
     }),
   ],
   secret : process.env.JWT_SECRET
-})
+};
+
+export default NextAuth(authOptions);
