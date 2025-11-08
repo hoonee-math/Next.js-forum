@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     req.body.password = hash
 
     let db = (await connectDB).db('forum')
-    await db.collection('user_card').insertOne(req.body)
+    await db.collection('user_cred').insertOne(req.body)
 
     return res.status(200).json('회원가입에 성공하였습니다.')
   }
