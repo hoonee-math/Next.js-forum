@@ -1,6 +1,7 @@
 import "./globals.css";
 import Link from "next/link";
 import LoginBtn from "./LoginBtn";
+import LogOutBtn from "./LogOutBtn";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
@@ -20,7 +21,7 @@ export default async function RootLayout({ children }) {
           <Link href="/" className="logo">Appleforum</Link>
           <Link href="/list">List</Link>
           <Link href="/write">Write</Link>
-          <LoginBtn/>
+          {session ? <span>{session.user.name} <LogOutBtn/> </span> : <LoginBtn/>}
         </div>
         {children}
       </body>
