@@ -1,4 +1,9 @@
-export default function Write() {
+import { authCheck } from "@/util/authCheck"
+
+export default async function Write() {
+  const session = await authCheck()
+  console.log("✨/Write/page",session);
+
   return (
     <div className="p-20">
       <h1>글 작성 페이지</h1>
