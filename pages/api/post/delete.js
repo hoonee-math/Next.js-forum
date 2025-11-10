@@ -19,7 +19,11 @@ export default async function handler(req, res) {
       if (!post) return res.status(404).json({ message: '게시글을 찾을 수 없습니다.' });
       console.log("✔️ author: ", post.author)
 
-      if(session.user.email !== post.author) return res.status(403).json({ message: '요청에 대한 권한이 없습니다' });
+      // 관리자이거나 작성자인 경우만 삭제 가능
+      const isAdmin = session.user.role === 'admin';
+      const isAuthor = session.user.email === post.author;
+
+      if(!isAdmin && !isAuthor) return res.status(403).json({ message: '요청에 대한 권한이 없습니다' });
 
       let result = await db.collection('post').deleteOne({_id: new ObjectId(req.body)})
       console.log(result) // { acknowledged: true, deletedCount: 1 }

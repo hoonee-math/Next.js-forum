@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     - 서버 기능 안에서 사용할 때는 req, res 도 함께 넣어줘야 함!
   */
   let session = await getServerSession(req, res, authOptions)
-  console.log("✨ session: ", session)
+  console.log("✨ pages/api/ session: ", session)
   // 사용자 정보는 세션 정보에서 불러와서 담아주고, 안전 장치도 해주자!
   if (session) req.body.author = session.user.email
   else return res.status(401).json('권한이 없거나, 인증 정보가 만료되었습니다.')
