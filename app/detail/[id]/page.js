@@ -1,6 +1,7 @@
 // detail/[id]/page.js
 import { connectDB } from "@/util/database.js"
 import { ObjectId } from "mongodb"
+import Comment from "@/app/detail/[id]/Comment.js"
 
 export default async function Detail(props) {
   console.log("==== props: ",props); // { params: { id: '2' }, searchParams: {} }
@@ -16,6 +17,7 @@ export default async function Detail(props) {
       <h4>상세페이지</h4>
       <h5>{result.title}</h5>
       <p>{result.content}</p>
+      <Comment/>
     </div>
   );
 }
