@@ -4,6 +4,7 @@ import LoginBtn from "./LoginBtn";
 import LogOutBtn from "./LogOutBtn";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import SessionProvider from "./SessionProvider";
 
 export const metadata = {
   title: "Create Next App",
@@ -13,17 +14,22 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   // 로그인 정보를 출력하는 기능
   let session = await getServerSession(authOptions) // 서버 컴포넌트, 서버 기능 안에서 사용 가능, 비동기 함수이므로 await 과 함께 사용
-  console.log("✨ session: ", session)
+  console.log("✨ app/layout session: ", session)
   return (
     <html lang="ko">
       <body>
-        <div className="navbar">
-          <Link href="/" className="logo">Appleforum</Link>
-          <Link href="/list">List</Link>
-          <Link href="/write">Write</Link>
-          {session ? <span>{session.user.name} <LogOutBtn/> </span> : <LoginBtn/>}
-        </div>
-        {children}
+        <SessionProvider session={session}>
+          <div className="navbar">
+            <Link href="/" className="logo">Appleforum</Link>
+            <Link href="/list">List</Link>
+            <Link href="/write">Write</Link>
+            {session
+              ? <span>{session.user.name} <LogOutBtn/> </span>
+              : <span><Link href="/register">회원가입</Link><LoginBtn/></span>
+            }
+          </div>
+          {children}
+        </SessionProvider>
       </body>
     </html>
   );
