@@ -30,7 +30,7 @@ export default function Comment(props) {
         ? comments.map((comment, i) => (
             <div key={i}>
               <p>{comment.content}</p>
-              <p>작성자: {comment.author}</p>
+              <p>작성자: {comment._id}</p>
             </div>
           ))
         : <p>댓글이 없습니다.</p>
@@ -39,6 +39,13 @@ export default function Comment(props) {
         <input onChange={(e)=>{ setComment(e.target.value) }} />
         <button onClick={()=>{
           fetch(`/api/post/${postId}/comment`,{ method:'POST', body:comment })
+          .then(res=>res.json())
+          .then(data=>{
+            console.log("💬 댓글 등록 결과: ", data)
+            alert('댓글이 등록되었습니다. 새로고침 해주세요.')
+            const newComments = [...comments, data.comment];
+            setComments(newComments);
+          })
         }}>등록</button>
       </div>
     </div>

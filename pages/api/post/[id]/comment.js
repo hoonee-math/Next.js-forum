@@ -13,10 +13,14 @@ export default async function handler(req, res) {
       const session = await getServerSession(req, res, authOptions);
       if (!session) return res.status(401).json({ message: '로그인이 필요합니다.' });
 
-      const db = (await connectDB).db('forum');
-      let result = await db.collection('comment').insertOne( { content: req.body, author:session.user.email ,parent: new ObjectId(postId) } );
+      let requestData = { content: req.body, author:session.user.email , parent: new ObjectId(postId) }
 
-      res.status(200).json({ message: "댓글 등록 완료" })
+      const db = (await connectDB).db('forum');
+      let result = await db.collection('comment').insertOne( requestData );
+
+      let responseData = { _id: result.insertedId, ...requestData };
+
+      res.status(200).json({ message: "댓글 등록 완료", comment: responseData })
     } catch {
       res.status(500).json({ message: "서버 내부 오류" })
     }
