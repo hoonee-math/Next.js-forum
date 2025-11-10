@@ -24,6 +24,13 @@ Next.js에서는 app/api (최신) 또는 pages/api 폴더 안의 파일들이 �
 | **Next.js 13~14 (App Router)** | `app/api`   | **Route Handler** 방식으로 동작 | 최신 방식 (App Router)     |
 | **Next.js 13 이후에도**            | `pages/api` | 여전히 지원됨 (하위 호환용)          | 단, App Router와 혼용은 비추천 |
 
+## Database
+
+본 프로젝트는 MongoDB Atlas (DaaS) 를 사용하여 데이터를 관리합니다.
+
+![alt text](/docs/MongoDB-Atlas.png)
+
+---
 
 ### ⚠️ 주의사항
 - app/ 디렉토리를 사용하는 App Router 프로젝트에서는 app/api 구조를 사용하는 게 권장됩니다.
