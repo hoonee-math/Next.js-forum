@@ -31,6 +31,28 @@ export default function Comment(props) {
             <div key={i}>
               <p>{comment.content}</p>
               <p>작성자: {comment._id}</p>
+              <button onClick={()=>{
+                // Optimistic UI: 즉시 +1 업데이트
+                const updatedComments = comments.map((c, idx) =>
+                  idx === i ? { ...c, like_count: (c.like_count || 0) + 1 } : c
+                );
+                setComments(updatedComments);
+
+                // API 요청
+                fetch(`/api/like`,{
+                  method:'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    type: "comment",
+                    _id: comment._id
+                  })
+                }).then(res => {
+                  if(!res.ok) {
+                    // 실패 시 롤백 (원래 상태로)
+                    setComments(comments);
+                  }
+                })
+              }}>👍{comment.like_count || 0}</button>
             </div>
           ))
         : <p>댓글이 없습니다.</p>
