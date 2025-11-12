@@ -12,10 +12,14 @@ export default async function Detail(props) {
 
   console.log("result: ", result);
 
+  // 런타임 에러 테스트용
+  // throw new Error('테스트 에러 발생!');
+
   return (
     <div>
       <h4>상세페이지</h4>
       <h5>{result.title}</h5>
+      {/* <h5>{result.title.error.이런건없음}</h5> */}
       <p>{result.content}</p>
       <Comment postId={id}/>
     </div>
