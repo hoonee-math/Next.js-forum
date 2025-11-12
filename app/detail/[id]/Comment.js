@@ -56,6 +56,10 @@ export default function Comment(props) {
             </div>
           ))
         : <p>댓글이 없습니다.</p>
+        // 댓글 로딩 중을 구현하고 싶으면
+        // useEffect의 비동기 작업에 대한 로딩 상태 관리는 별도의 state 관리가 필요
+        // 예: const [isLoading, setIsLoading] = useState(true); 등을 사용
+        // isLoading이 true일 때 로딩중 표시, false일 때 댓글 표시
       }
       <div>
         <input onChange={(e)=>{ setComment(e.target.value) }} />
