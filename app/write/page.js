@@ -1,10 +1,10 @@
 'use client'
 
-import { authCheck } from "@/util/authCheck"
+import { useState } from "react";
 
-export default async function Write() {
-  const session = await authCheck()
-  console.log("✨/Write/page",session);
+export default function Write() {
+
+  let [src, setSrc] = useState('')
 
   return (
     <div className="p-20">
